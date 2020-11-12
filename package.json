@@ -1,0 +1,27 @@
+{
+    "name": "@digitalheat/spark",
+    "description": "A production framework for ACF + Timber powered WordPress development.",
+    "version": "0.0.0",
+    "homepage": "https://github.com/digitalheat/spark",
+    "author": {
+        "name": "Digital Heat",
+        "email": "hq@digitalhe.at",
+        "url": "https://digitalhe.at"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/digitalheat/spark.git"
+    },
+    "bugs": {
+        "url": "https://github.com/digitalheat/spark/issues"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=14.15.0",
+        "npm": ">=6"
+    },
+    "scripts": {
+        "start": "docker-compose up -d",
+        "rebuild": "docker-compose up -d --build"
+    }
+}
