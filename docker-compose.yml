@@ -33,7 +33,7 @@ services:
     wordpress:
         depends_on:
             - db
-        image: wordpress:${WORDPRESS_VERSION}-fpm-alpine
+        image: wordpress:${WORDPRESS_VERSION}
         container_name: wordpress
         restart: unless-stopped
         env_file: .env
@@ -45,7 +45,7 @@ services:
             - WORDPRESS_DEBUG=1
         volumes:
             - wordpress:/var/www/html
-            - ./wp-content/themes/spark-wp:/var/www/html/wp-content/themes/spark-wp
+            - ./wp-content/theme/${THEME_SLUG}:/var/www/html/wp-content/themes/${THEME_SLUG}
             - ./wp-content/plugins:/var/www/html/wp-content/plugins
             - ./.docker/php/uploads.conf:/usr/local/etc/php/conf.d/uploads.ini
         networks:
@@ -64,7 +64,7 @@ services:
             - "80:80"
         volumes:
             - wordpress:/var/www/html
-            - ./wp-content/themes/spark-wp:/var/www/html/wp-content/themes/spark-wp
+            - ./wp-content/theme/${THEME_SLUG}:/var/www/html/wp-content/themes/${THEME_SLUG}
             - ./wp-content/plugins:/var/www/html/wp-content/plugins
             - ./.docker/nginx-templates:/etc/nginx/templates
             - ./.docker/php/uploads.conf:/usr/local/etc/php/conf.d/uploads.ini

@@ -1,0 +1,48 @@
+{
+    "name": "digitalheat/spark",
+    "description": "A docker-based production framework for ACF + Timber powered WordPress development.",
+    "version": "1.0.0",
+    "homepage": "https://github.com/digitalheat/spark",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Digital Heat",
+            "email": "hq@digitalhe.at",
+            "homepage": "https://digitalhe.at"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/digitalheat/spark/issues"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "composer/installers": "^1.9",
+        "wpackagist-plugin/classic-editor": "^1.6",
+        "wpackagist-plugin/redirection": "^4.9",
+        "wpackagist-plugin/timber-library": "^1.18",
+        "wpackagist-plugin/debug-bar": "^1.1",
+        "wpackagist-plugin/debug-bar-timber": "^1.0",
+        "wpackagist-plugin/wordpress-seo": "^15.2",
+        "wpackagist-plugin/jetpack": "^9.1",
+        "wpackagist-plugin/query-monitor": "^3.6"
+    },
+    "repositories": {
+        "wpackagist": {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": ["wpackagist-plugin/*"]
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "wp-content/plugins/{$name}": ["type:wordpress-plugin"]
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.0"
+        },
+        "preferred-install": "dist",
+        "vendor-dir": "_lib/composer/vendor"
+    }
+}
