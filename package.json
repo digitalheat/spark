@@ -24,7 +24,7 @@
         "postinstall": "sh ./_lib/init/init.sh",
         "start": "docker-compose up -d",
         "stop": "docker-compose down",
-        "rebuild": "docker-compose down -v && sh ./_lib/init/init.sh"
+        "rebuild": "npm run postinstall"
     },
     "devDependencies": {
         "@babel/core": "^7.12.3",

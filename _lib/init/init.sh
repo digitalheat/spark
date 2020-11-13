@@ -106,6 +106,26 @@ if ! [ -e "./.env" ]; then
     fi
 fi
 
+# Clear existing Docker containers.
+echo "Removing existing Docker containers if they exist...\n"
+
+if [ "$(docker ps -aq -f name=db)" ]; then
+    docker rm -f db
+fi
+
+if [ "$(docker ps -aq -f name=phpmyadmin)" ]; then
+    docker rm -f phpmyadmin
+fi
+
+if [ "$(docker ps -aq -f name=wordpress)" ]; then
+    docker rm -f wordpress
+fi
+
+if [ "$(docker ps -aq -f name=webserver)" ]; then
+    docker rm -f webserver
+fi
+
+
 # Create Docker containers.
 echo "\nCreating docker containers...\n"
 
