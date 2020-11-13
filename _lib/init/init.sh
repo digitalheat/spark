@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PROJECT_CONTAINER=$(basename $PWD)
+
 COLOR_DEFAULT=`tput sgr0`
 COLOR_HIGHLIGHT=`tput setaf 75; tput bold`
 COLOR_LINK=`tput setaf 219`
@@ -113,7 +115,7 @@ if ! [ -e "./.env" ]; then
 fi
 
 # Clear existing Docker containers.
-echo "Removing existing Docker containers if they exist...\n"
+echo "Removing existing Docker containers and volumes if they exist...\n"
 
 if [ "$(docker ps -aq -f name=db)" ]; then
     docker rm -f db
@@ -131,6 +133,17 @@ if [ "$(docker ps -aq -f name=webserver)" ]; then
     docker rm -f webserver
 fi
 
+if [ "$(docker network ls -f name=${PROJECT_CONTAINER}_app-network)" ]; then
+    docker network rm ${PROJECT_CONTAINER}_app-network
+fi
+
+if [ "$(docker volume ls -f name=${PROJECT_CONTAINER}_wordpress)" ]; then
+    docker volume rm ${PROJECT_CONTAINER}_wordpress
+fi
+
+if [ "$(docker volume ls -f name=${PROJECT_CONTAINER}_dbdata)" ]; then
+    docker volume rm ${PROJECT_CONTAINER}_dbdata
+fi
 
 # Create Docker containers.
 echo "\nCreating docker containers...\n"
