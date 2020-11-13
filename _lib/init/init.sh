@@ -104,6 +104,12 @@ if ! [ -e "./.env" ]; then
 
         sed -i "" "s/^MYSQL_PASSWORD=.*$/MYSQL_PASSWORD=${RANDOM_PASSWORD}/" .env
     fi
+
+    read -p "Set ACF Pro URL: " -r ACF_PRO_URL
+
+    if ! [[ -z "$ACF_PRO_URL" ]]; then
+        sed -i "" "s|^ACF_PRO_URL=.*$|ACF_PRO_URL=${ACF_PRO_URL}|" .env
+    fi
 fi
 
 # Clear existing Docker containers.

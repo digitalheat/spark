@@ -24,13 +24,29 @@
         "wpackagist-plugin/debug-bar-timber": "^1.0",
         "wpackagist-plugin/wordpress-seo": "^15.2",
         "wpackagist-plugin/jetpack": "^9.1",
-        "wpackagist-plugin/query-monitor": "^3.6"
+        "wpackagist-plugin/query-monitor": "^3.6",
+        "advanced-custom-fields/advanced-custom-fields-pro": "^5.9"
     },
     "repositories": {
         "wpackagist": {
             "type": "composer",
             "url": "https://wpackagist.org",
             "only": ["wpackagist-plugin/*"]
+        },
+        "acf": {
+            "type": "package",
+            "package": {
+                "name": "advanced-custom-fields/advanced-custom-fields-pro",
+                "version": "5.9.3",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "{%ACF_PRO_URL}"
+                },
+                "require": {
+                    "ffraenz/private-composer-installer": "^5.0"
+                }
+            }
         }
     },
     "extra": {
