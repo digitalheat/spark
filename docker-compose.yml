@@ -43,6 +43,11 @@ services:
             - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
             - WORDPRESS_DB_NAME=wordpress
             - WORDPRESS_DEBUG=1
+            - |
+                WORDPRESS_CONFIG_EXTRA=
+                define( 'SAVEQUERIES', true );
+                define( 'WP_AUTO_UPDATE_CORE', false );
+
         volumes:
             - wordpress:/var/www/html
             - ./wp-content/theme/${THEME_SLUG}:/var/www/html/wp-content/themes/${THEME_SLUG}
